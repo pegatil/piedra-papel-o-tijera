@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>piedra, papel o tijera</title>
+</head>
+<body>
+    <!--<a href="index.html"><input type="button" value="←"></a>-->
+    <center><h1>piedra, papel o tijera</h1></center>
+    <center><p>escoje tu rol</p></center>
+    <center>
+    <img src="piedra" class="a1" id="pd">
+    <img src="papel.jpg" class="a1" id="pp">
+    <img src="tijera.jpg" class="a1" id="tj">
+    </center>
+    <center><p id="res" class="ser"></p></center>
+    <center><p>contador </p></center>
+    <center><p id="cp">tu: 0</p> </center>
+    <center><p id="cm">maqina: 0</p></center>
+    <style>
+        
+        input{
+            border: 0px;
+            background: #0000;
+        }
+        .a1 {
+            height: 300px;
+            width: 300px;
+        }
+        .ser {
+            font-size: 100px;
+        }
+    </style>
+    <script>
+        pd = document.getElementById("pd")
+        pp = document.getElementById("pp")
+        tj = document.getElementById("tj")
+        resp = document.getElementById("res")
+        cp = document.getElementById("cp")
+        cm = document.getElementById("cm")
+        cp1 = 0
+        cm1 = 0
+        pd.addEventListener("click",()=>{
+            n1 = "piedra"
+            n2 = ran()
+            res(n2,n1)
+        })
+        pp.addEventListener("click",()=>{
+            n1 = "papel"
+            n2 = ran()
+            res(n2,n1)
+        })
+        tj.addEventListener("click",()=>{
+            n1 = "tijera"
+            n2 = ran()
+            res(n2,n1)
+        })
+
+        function ran() {
+            ast = Math.round(Math.random() * 2)
+            return ast
+        }
+
+        
+        function res(cpu,juga) {
+            
+            if (cpu == 0){
+                cpu = "piedra"
+            } else if (cpu == 1) {
+                cpu = "papel"
+            } else if (cpu == 2) {
+                cpu = "tijera"
+            }
+            if (juga == cpu) {
+                console.log("enpate")
+                resp.innerHTML = "empate"
+            } else if (juga == "tijera" && cpu == "piedra" ){
+                console.log("perdiste")
+                resp.innerHTML = "perdiste"
+                cm1 = cm1 + 1
+            } else if (juga == "piedra"  && cpu == "papel") {
+                console.log("perdiste")
+                cm1 = cm1 + 1
+                resp.innerHTML = "perdiste"
+            } else if (juga == "papel" && cpu == "tijera") {
+                console.log("perdiste")
+                cm1 = cm1 + 1
+                resp.innerHTML = "perdiste"
+            } else {
+                console.log("ganaste")
+                resp.innerHTML = "ganaste"
+                cp1 = cp1 + 1
+            }
+            cp.innerHTML = 'tu: ' + cp1
+            cm.innerHTML = 'maquina ' + cm1
+            
+        }
+
+    </script>
+</body>
+</html>
